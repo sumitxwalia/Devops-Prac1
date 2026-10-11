@@ -1,0 +1,15 @@
+name : pipline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 1) Check File is Not Empty
+        run: test -s app/message.txt
+      - name: 2) Show File
+        run:  cat app/message.txt
